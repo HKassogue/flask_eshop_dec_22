@@ -27,6 +27,7 @@
 </head>
 
 <body>
+    {% block header %}
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
@@ -173,8 +174,10 @@
         </div>
     </div>
     <!-- Navbar End -->
+    {% endblock %}
 
-
+    
+    {% block caroussel %}
     <!-- Carousel Start -->
     <div class="container-fluid mb-3">
         <div class="row px-xl-5">
@@ -240,8 +243,10 @@
         </div>
     </div>
     <!-- Carousel End -->
+    {% endblock %}
 
 
+    {% block featuries %}
     <!-- Featured Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
@@ -272,8 +277,10 @@
         </div>
     </div>
     <!-- Featured End -->
+    {% endblock %}
 
 
+    {% block categories %}
     <!-- Categories Start -->
     <div class="container-fluid pt-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
@@ -437,8 +444,10 @@
         </div>
     </div>
     <!-- Categories End -->
+    {% endblock %}
 
 
+    {% block content %}        
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
@@ -951,8 +960,10 @@
         </div>
     </div>
     <!-- Vendor End -->
+    {% endblock %}
 
 
+    {% block footer %}
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
@@ -1027,7 +1038,7 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
+    {% endblock %}
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
