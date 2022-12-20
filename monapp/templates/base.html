@@ -146,16 +146,45 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
-                            <a href="{{ url_for('detail') }}" class="nav-item nav-link">Shop Detail</a>
+                            {% if request.path=='/' %}
+                                <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
+                            {% else %}
+                                <a href="{{ url_for('index') }}" class="nav-item nav-link">Home</a>
+                            {% endif %}
+                            {% if request.path=='/shop' %}
+                                <a href="{{ url_for('shop') }}" class="nav-item nav-link active">Shop</a>
+                            {% else %}
+                                <a href="{{ url_for('shop') }}" class="nav-item nav-link">Shop</a>
+                            {% endif %}
+                            {% if request.path=='/detail' %}
+                                <a href="{{ url_for('detail') }}" class="nav-item nav-link active">Shop Detail</a>
+                            {% else %}
+                                <a href="{{ url_for('detail') }}" class="nav-item nav-link">Shop Detail</a>
+                            {% endif %}
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
-                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="{{ url_for('cart') }}" class="dropdown-item">Shopping Cart</a>
-                                    <a href="{{ url_for('checkout') }}" class="dropdown-item">Checkout</a>
+                                {% if request.path in ['/cart', '/checkout'] %}
+                                    <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
+                                {% else %}
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
+                                {% endif %}
+                                    <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                    {% if request.path=='/cart' %}
+                                        <a href="{{ url_for('cart') }}" class="dropdown-item active">Shopping Cart</a>
+                                    {% else %}
+                                        <a href="{{ url_for('cart') }}" class="dropdown-item">Shopping Cart</a>
+                                    {% endif %}
+                                    {% if request.path=='/checkout' %}
+                                        <a href="{{ url_for('checkout') }}" class="dropdown-item active">Checkout</a>
+                                    {% else %}
+                                        <a href="{{ url_for('checkout') }}" class="dropdown-item">Checkout</a>
+                                    {% endif %}
                                 </div>
                             </div>
-                            <a href="{{ url_for('contact') }}" class="nav-item nav-link">Contact</a>
+                            {% if request.path=='/contact' %}
+                                <a href="{{ url_for('contact') }}" class="nav-item nav-link active">Contact</a>
+                            {% else %}
+                                <a href="{{ url_for('contact') }}" class="nav-item nav-link">Contact</a>
+                            {% endif %}
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
